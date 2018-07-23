@@ -20,8 +20,6 @@ class TodoListViewController: UITableViewController {
         
         let newItem = Item()
         newItem.title = "Buy Milk"
-        newItem.done = true
-        
         itemArray.append(newItem)
         
         
@@ -33,12 +31,12 @@ class TodoListViewController: UITableViewController {
         newItem2.title = "Car Wash"
         itemArray.append(newItem2)
         
-      /*  if let items = defualts.array(forKey: "TodoListArray") as? [String] {
+    if let items = defualts.array(forKey: "TodoListArray") as? [Item] {
             
             itemArray = items
-        }*/
+        
     }
-
+}
        // MARK - Tableview Datasource Methods
     
     
@@ -55,13 +53,18 @@ class TodoListViewController: UITableViewController {
         cell.textLabel?.text = item.title
         
         // Ternary operator ==>
-        // Value = condition ? valueIfTrue |: valueIfFalse
-        if item.done == true {
+        // Value = condition ? valueIfTrue : valueIfFalse
+       
+        // short code form CHECKMARK function
+        cell.accessoryType = item.done == true ? .checkmark : .none
+        
+         // long code form CHECKMARK function
+        /* if item.done == true {
             
             cell.accessoryType = .checkmark
         }else {
             cell.accessoryType = .none
-        }
+        } */
         return cell
     }
 

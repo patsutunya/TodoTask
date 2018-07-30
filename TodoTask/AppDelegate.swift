@@ -20,20 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        //print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        do {
+            _ = try Realm()
+        }catch{
+            print("Error initialising new realm, \(error)")
+        }
         
         
         return true
     }
 
 
-    func applicationWillTerminate(_ application: UIApplication) {
+  /*  func applicationWillTerminate(_ application: UIApplication) {
     
-        self.saveContext()
-    }
+      //  self.saveContext()
+    } */
     
     // MARK: - Core Data stack
     
-    lazy var persistentContainer: NSPersistentContainer = {
+   /* lazy var persistentContainer: NSPersistentContainer = {
        
         let container = NSPersistentContainer(name: "DataModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -43,11 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         })
         return container
-    }()
+    }() */
     
     // MARK: - Core Data Saving support
     
-    func saveContext () {
+   /* func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -58,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
-    }
+    } */
 
  
 }

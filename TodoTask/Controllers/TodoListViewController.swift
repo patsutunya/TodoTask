@@ -11,7 +11,8 @@ import RealmSwift
 
 
 
-class TodoListViewController: UITableViewController {
+
+class TodoListViewController: SwipeTableViewController {
 
     var todoItems : Results<Item>?
     let realm = try! Realm()
@@ -32,7 +33,7 @@ class TodoListViewController: UITableViewController {
         
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
+         tableView.rowHeight = 75.0
    
         //loadItems()
         
@@ -53,16 +54,14 @@ class TodoListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
+       // let cell = tableView.dequeueReusableCell(withIdentifier: "TodoItemCell", for: indexPath)
         
+        let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = todoItems?[indexPath.row] {
             
+          
             cell.textLabel?.text = item.title
             
-            // Ternary operator ==>
-            // Value = condition ? valueIfTrue : valueIfFalse
-            
-            // short code form CHECKMARK function
             cell.accessoryType = item.done == true ? .checkmark : .none
             
         } else {
@@ -71,17 +70,7 @@ class TodoListViewController: UITableViewController {
         }
        
         
-        // Ternary operator ==>
-        // Value = condition ? valueIfTrue : valueIfFalse
-       
-        // short code form CHECKMARK function
-        //cell.accessoryType = item.done == true ? .checkmark : .none
-         // long code form CHECKMARK function
-        /* if item.done == true {
-            cell.accessoryType = .checkmark
-        }else {
-            cell.accessoryType = .none
-        } */
+     
         
         return cell
     }
@@ -107,22 +96,6 @@ class TodoListViewController: UITableViewController {
         
         tableView.reloadData()
         
-        
-        // short code form DONE function
-       //todoItems[indexPath.row].done = !todoItems[indexPath.row].done
-        // saveItems()
-        
-        // long code form DONE function
-      /*  if itemArray[indexPath.row].done == false {
-            itemArray[indexPath.row].done = true
-        }else {
-            itemArray[indexPath.row].done = false
-        } */
-        /* if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-        } else {
-            tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        } */
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -169,17 +142,12 @@ class TodoListViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+  
+    
     
     // MARK: - Model Manupulation Methods
     
- /*   func saveItems() {
-        do {
-          try  context.save()
-     } catch {
-            print("Error saving context \(error)")
-        }
-        self.tableView.reloadData()
-    } */
+
    
     func loadItems() {
         
@@ -188,37 +156,24 @@ class TodoListViewController: UITableViewController {
         
         tableView.reloadData()
         
-      /*  let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", (selectedCategory!.name)!)
-        // optional binding to check addtionalPredicate
-        if let addtionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
-        } else {
-            request.predicate = categoryPredicate
-        }
-        /*let compoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, predicate!])
-          request.predicate = compoundPredicate */
-        do {
-        itemArray =  try context.fetch(request)
-        }catch{
-           print("Error fetching data from context \(error)")
-        } */
+     
     }
     
-    /*  func loadItems() {
+    override func updateModel(at indexPath: IndexPath) {
         
-        if let data = try? Data(contentsOf: dataFilePath!) {
-        
-            let decoder = PropertyListDecoder()
+        if let todoItemForDeletion = self.todoItems?[indexPath.row]{
             do {
-            itemArray = try decoder.decode([Item].self, from: data)
-            } catch {
-                print("Error decoding item array \(error)")
+            try realm.write {
+                realm.delete(todoItemForDeletion)
             }
-       
+            } catch {
+                print("Error deleting \(error)")
+            }
         }
-    } */
-    
+    }
 }
+
+
 // MARK: - Search bar methods
 
 extension TodoListViewController: UISearchBarDelegate {
@@ -243,4 +198,7 @@ extension TodoListViewController: UISearchBarDelegate {
             }
         }
     }
+    
 }
+
+

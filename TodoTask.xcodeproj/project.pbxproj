@@ -14,6 +14,7 @@
 		7C5929B62105093300954AAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C5929B42105093300954AAF /* LaunchScreen.storyboard */; };
 		7C9D186F210E55D300DAA9A8 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D186E210E55D300DAA9A8 /* Item.swift */; };
 		7C9D1871210E55E800DAA9A8 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D1870210E55E800DAA9A8 /* Category.swift */; };
+		7C9D18732115F8EC00DAA9A8 /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9D18722115F8EC00DAA9A8 /* SwipeTableViewController.swift */; };
 		7CB1161E210DF95A00CE634F /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB1161D210DF95A00CE634F /* CategoryTableViewController.swift */; };
 		B6185C8F54170F26CFEAFEDA /* Pods_TodoTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E8B344FDB3ACDA828141C30 /* Pods_TodoTask.framework */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		7C5929B72105093300954AAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7C9D186E210E55D300DAA9A8 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7C9D1870210E55E800DAA9A8 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		7C9D18722115F8EC00DAA9A8 /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		7CB1161D210DF95A00CE634F /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		FE13C2ADE5058879364C16ED /* Pods-TodoTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodoTask.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodoTask/Pods-TodoTask.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,6 +101,7 @@
 			children = (
 				7CB1161D210DF95A00CE634F /* CategoryTableViewController.swift */,
 				7C5929AD2105092A00954AAF /* TodoListViewController.swift */,
+				7C9D18722115F8EC00DAA9A8 /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				7C5929AE2105092A00954AAF /* TodoListViewController.swift in Sources */,
 				7C5929AC2105092A00954AAF /* AppDelegate.swift in Sources */,
 				7CB1161E210DF95A00CE634F /* CategoryTableViewController.swift in Sources */,
+				7C9D18732115F8EC00DAA9A8 /* SwipeTableViewController.swift in Sources */,
 				7C9D1871210E55E800DAA9A8 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
